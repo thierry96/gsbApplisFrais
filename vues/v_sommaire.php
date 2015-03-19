@@ -28,10 +28,10 @@
               <a href="index.php?uc=acceuil&action=vueAcceuil" title="Accueil">Acceuil</a>
            </li> 
            <li class="smenu">
-              <a href="index.php?uc=gererFrais&action=saisirFrais" title="Valider les fiches de frais ">Valider les fiches de frais</a>
+              <a href="index.php?uc=validerFicheFrais&action=" title="Valider les fiches de frais ">Valider les fiches de frais</a>
            </li>
            <li class="smenu">
-              <a href="index.php?uc=etatFrais&action=selectionnerMois" title="Consultation de mes fiches de frais">Suivi du paiement des fiches</a>
+              <a href="index.php?uc=suiviFicheFrais&action=" title="Consultation de mes fiches de frais">Suivi du paiement des fiches</a>
            </li>
          <?php } ?>
  	   <li class="smenu">

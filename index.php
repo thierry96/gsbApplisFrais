@@ -22,7 +22,12 @@ switch($uc){
         case 'acceuil' :{
 		include("controleurs/c_acceuil.php");break; 
 	}
-        
+        case 'validerFicheFrais' :{
+		include("controleurs/c_validerFicheFrais.php");break; 
+	}
+        case 'suiviFicheFrais' :{
+		include("controleurs/c_suiviFicheFrais.php");break; 
+	}
 }
 include("vues/v_pied.php") ;
 ?>

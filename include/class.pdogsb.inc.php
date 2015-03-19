@@ -51,7 +51,7 @@ class PdoGsb{
  
  * @param $login 
  * @param $mdp
- * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
+ * @return l'id, le nom, le prénom et le profil sous la forme d'un tableau associatif 
 */
 	public function getInfosVisiteur($login, $mdp){
 		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom, visiteur.profil as profil from visiteur 
