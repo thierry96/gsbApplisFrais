@@ -13,7 +13,7 @@
                                 <h2><strong><?php echo $_SESSION['prenom']."  ".$_SESSION['nom']  ?></strong></h2>
                                 <h3><strong><?php echo $_SESSION['profil'] ?></strong><h3>
 			</li>
-        <?php if ( $_SESSION['profil'] == "Visiteur médical"){ ?> 
+        <?php if ($_SESSION['profil'] == "Visiteur médical"){ ?> 
            <li class="smenu">
               <a href="index.php?uc=acceuil&action=vueAcceuil" title="Accueil">Acceuil</a>
            </li>             
@@ -28,10 +28,10 @@
               <a href="index.php?uc=acceuil&action=vueAcceuil" title="Accueil">Acceuil</a>
            </li> 
            <li class="smenu">
-              <a href="index.php?uc=validerFicheFrais&action=" title="Valider les fiches de frais ">Valider les fiches de frais</a>
+              <a href="index.php?uc=validerFraisFiche&action=choixVisiteurEtMois"title="Valider les fiches de frais ">Valider les fiches de frais</a>
            </li>
            <li class="smenu">
-              <a href="index.php?uc=suiviFicheFrais&action=" title="Consultation de mes fiches de frais">Suivi du paiement des fiches</a>
+              <a href="index.php?uc=suiviFraisFiche&action=" title="Consultation de mes fiches de frais">Suivi du paiement des fiches</a>
            </li>
          <?php } ?>
  	   <li class="smenu">

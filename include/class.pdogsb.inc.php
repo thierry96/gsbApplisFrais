@@ -126,6 +126,16 @@ class PdoGsb{
 		$lesLignes = $res->fetchAll();
 		return $lesLignes;
 	}
+ /**
+  * Retourne le nom et prenom des visiteurs
+  * @return un tableau associatif
+  */ 
+        public function getLesVisiteurs() {
+            $req = "select id,nom,prenom from visiteur where profil='Visiteur médical'order by nom asc";
+            $res = PdoGsb::$monPdo->query($req);
+            $lignes = $res->fetchAll();
+            return $lignes;
+        }
 /**
  * Met à jour la table ligneFraisForfait
  
@@ -269,7 +279,34 @@ class PdoGsb{
 		}
 		return $lesMois;
 	}
-/**
+        /**
+         * Retourne les mois
+         *  @return un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant
+         */
+        public function getLesMois() {
+            // initialisation d'une requête pour avoir la liste des mois de la table FicheFrais
+            $req = "select fichefrais.mois as mois from  fichefrais order by fichefrais.mois desc ";
+            // Exécution de la requête et récupération des informations.
+		$res = PdoGsb::$monPdo->query($req);
+		$lesMois =array();
+            // Déclaration d'un curseur pour parcourir les lignes des résultats obtenus
+		$laLigne = $res->fetch();
+            // tant que le curseur n'est pas à la fin, il passe à la ligne suivante    
+		while($laLigne != null)	{
+			$mois = $laLigne['mois'];
+			$numAnnee =substr( $mois,0,4);
+			$numMois =substr( $mois,4,2);
+			$lesMois["$mois"]=array(
+		     "mois"=>"$mois",
+		    "numAnnee"  => "$numAnnee",
+			"numMois"  => "$numMois"
+             );
+			$laLigne = $res->fetch(); 		
+		}
+		return $lesMois;
+        }
+
+        /**
  * Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
  
  * @param $idVisiteur 
