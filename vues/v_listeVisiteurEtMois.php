@@ -1,13 +1,15 @@
 
 <div id="contenu">
     <h2> Valider les fiches de frais  </h2>
-    <h3>Visiteur et mois à sélectionner</h3>
+    <h3>Visiteur et mois à sélectionner </h3>
     <form action="index.php?uc=validerFraisFiche&action=validerFrais" method="POST">
         <div class="corpsForm">
             <p>
             <label for="lstVisiteur">Visiteur :</label>
-            <select name="lstVisiteur">
+           
+            <select name="lstVisiteur" onchange="document.location.href='index.php?uc=validerFraisFiche&action=choixVisiteurEtMois';">
                 <?php 
+                
                     foreach ($lesVisiteurs as $unVisiteur){
                         $nom = $unVisiteur['nom'];
                         $prenom = $unVisiteur['prenom'];
@@ -15,22 +17,25 @@
                         if ($nom." ".$prenom == $leVisiteur)
                             {                                                      
                         ?>
-                        <option selected value="<?php echo  $nom." ".$prenom ?>"><?php echo  $nom." ".$prenom ?> </option>
+                        <option selected value="<?php echo  $id ?>"><?php echo  $nom." ".$prenom ?> </option>
                         <?php
                          }else {
                         ?> 
-                         <option  value="<?php echo  $nom." ".$prenom ?>"><?php echo  $nom." ".$prenom ?> </option>
+                         <option  value="<?php echo  $id ?>"><?php echo  $nom." ".$prenom ?> </option>
                         <?php
                          }
-                    }
-                    ?>    
+                    }  
+                ?>    
             </select>
+               
             </p>
             <p>
             <label for="lstMois" accesskey="n">Mois : </label>
             <select id="lstMois" name="lstMois"> 
             
             <?php
+                  if($lesMois != NULL)
+                  {
 			foreach ($lesMois as $unMois)
 			{
 			    $mois = $unMois['numMois']."/".$unMois['numAnnee'];
@@ -45,14 +50,16 @@
 				<option value="<?php echo $mois ?>"><?php echo  $numMois."/".$numAnnee ?> </option>
 				<?php 
 				}	
-			}        
+			}
+                  } 
+                  echo $lesVisiteurs;
 		   ?>         
         </select>
             </p>          
         </div>
         <div class="piedForm">
          <p>
-            <input id="ok" type="submit" value="Valider" size="20" />
+       <input id="ok" type="submit" value="Valider" size="20" />
          </p> 
       </div>
     </form>

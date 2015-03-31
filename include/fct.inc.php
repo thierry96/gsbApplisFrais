@@ -67,7 +67,17 @@ function getMois($date){
 		}
 		return $annee.$mois;
 }
-
+/**
+ * retourne le mois au format aaaamm en fonction du mois au format mmaaaa
+ * 
+ * @param $date au format mmaaaa
+ * @return le mois au format aaaamm
+ */
+function getMoisAng($date){
+    $chaine = substr($date, 0 , 2);
+    $chaine2 = substr($date, 3 , 7);
+    return $chaine2."".$chaine;
+}
 /* gestion des erreurs*/
 /**
  * Indique si une valeur est un entier positif ou nul
@@ -219,5 +229,3 @@ function espace($nbEspaces=1) {
           echo "<br />";
       }
   }
-
-?>
