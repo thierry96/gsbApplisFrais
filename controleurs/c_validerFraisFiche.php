@@ -1,8 +1,7 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Cette page php constitu le controleur des actions qui seront mennées pour la validation d'un fiche de frais.
  */
 include("vues/v_sommaire.php");
 // récupération de l'action 
@@ -27,14 +26,14 @@ switch($action){
         include ("vues/v_listeVisiteurEtMois.php");
         break;
     }
-    case 'validerFrais':{
-        $lesVisiteurs = $pdo->getLesVisiteurs();
+    case 'validerFrais': {
         // récupération de l'id du visiteur qui a été choisi
         $idVisiteur = $_REQUEST['lstVisiteur']; 
-        // récupération du nom et du prénom du visiteur choisi
-        $leVisiteur = $pdo->getNomPrenom($idVisiteur) ;
         //récupération du mois sélectionné
         $leMois = $_REQUEST['lstMois'] ; 
+        $lesVisiteurs = $pdo->getLesVisiteurs();       
+        // récupération du nom et du prénom du visiteur choisi
+        $leVisiteur = $pdo->getNomPrenom($idVisiteur) ;
 	$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
 	$moisASelectionner = $leMois ;
         // transformation du mois choisi en format aaaamm
@@ -43,32 +42,32 @@ switch($action){
         //du mois sélectionné
         // récupération des informations de la fiche des frais hors forfaits du visiteur choisi en fonction du mois
         // variables globales pour connaitre la somme des frais forfaits et hors forfait
-        $sommeFF = 0;
-        $sommeFHF = 0;
+        $sommeFF = 0 ;
+        $sommeFHF = 0 ;
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$moisAng); 
 	$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$moisAng);
         // récupération des informations des frais forfaits du visiteur en question
         $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$moisAng); 
-      // récupération du nombre de justificatif du mois
+        // récupération du nombre de justificatif du mois
         $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
-        //$montantFraisForfait = $pdo->getMontantTotalFicheFrais($idVisiteur,$MoisAng);
-        if ($pdo->estPremierFraisHorsForfaitMois($idVisiteur,$moisAng)){
+        if ($pdo->estPremierFraisHorsForfaitMois($idVisiteur,$moisAng)) {
             $ok = TRUE;
-        }else{
+        } else {
             $ok = FALSE;
         }
         // test pour savoir si la fiche en question est la première du mois
-        if(!$pdo->estPremierFraisMois($idVisiteur , $moisAng)) {
-           include ("vues/v_validerFrais.php") ;
+        if (!$pdo->estPremierFraisMois($idVisiteur , $moisAng)) {
+           //include ("/vues/v_validerFrais.php") ;
+           include '/vues/v_validerFrais.php';
+           echo "tes";
         } else {
           // inclusion de la vue pour l'affichage de l'information
             $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais ce mois" ;
-            include ("vues/v_information.php");
-            include ("vues/v_listeVisiteurEtMois.php");
-        }
-       
-    break;    
-}
+            include_once ("vues/v_information.php");
+            include_once ("vues/v_listeVisiteurEtMois.php");
+        }  
+        break;      
+     }
     case 'validerMajFraisForfait':{
            if(isset($_POST['valid'])){ 
            // récupération des informations sur les frais forfaits   
@@ -78,7 +77,7 @@ switch($action){
            // récupération du mois choisi au format mmmmaa  
            $moisAng = $_REQUEST['leMois'] ;         
            // Si les frais forfaits validés respectent les conditions établies   
-           if(lesQteFraisValides($lesFrais)){
+           if (lesQteFraisValides($lesFrais)) {
             // Mise à jour des éléments forfaitisés      
 	  	 $pdo->majFraisForfait($idVisiteur,$moisAng,$lesFrais);
             } else {
@@ -115,7 +114,7 @@ switch($action){
                 $ok = FALSE;
             }
             include ("vues/v_validerFrais.php") ;
-     break;
+            break;
       }
 }
     case 'supprimerFrais':{
@@ -162,7 +161,7 @@ switch($action){
             // condition pour savoir si les frais hors forfaits du visiteurs sont premières du mois ou pas
             if ($pdo->estPremierFraisHorsForfaitMois($idVisiteur,$moisAng)) {
                 $ok = TRUE;
-            }else{
+            } else {
                 $ok = FALSE;
             }
             include ("vues/v_validerFrais.php") ;
