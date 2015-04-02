@@ -1,11 +1,16 @@
 <?php
+/**
+ * Cette page php constitu le controleur des actions qui seront mennées pour le suivi du paiement des fiches de frais.
+ */
 include("vues/v_sommaire.php");
 // récupération de l'action 
 $action = $_REQUEST['action'];
 
 switch($action){
     case 'choixVisiteurEtMois':{
+            // récupération du nom + du prénom des visiteurs
             $lesVisiteurs = $pdo->getLesVisiteurs();
+            // récupération du premier visiteur dans la liste classé par ordre aplphabétique
             $idVisiteur = $pdo->getLeFirstVisiteur();
             $idVisiteur = $idVisiteur['id'] ;
             $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
