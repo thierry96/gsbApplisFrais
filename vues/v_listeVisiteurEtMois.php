@@ -14,12 +14,11 @@
                         $nom = $unVisiteur['nom'];
                         $prenom = $unVisiteur['prenom'];
                         $id = $unVisiteur['id'];
-                        if ($nom." ".$prenom === $leVisiteur['nom']." ".$leVisiteur['prenom'])
-                            {                                                      
+                        if ($nom." ".$prenom === $leVisiteur['nom']." ".$leVisiteur['prenom']) {                                                      
                         ?>
                         <option selected value="<?php echo  $id; ?>"><?php echo  $nom." ".$prenom ;?> </option>
                         <?php
-                         }else {
+                         } else {
                         ?> 
                          <option  value="<?php echo  $id ;?>"><?php echo  $nom." ".$prenom; ?> </option>
                         <?php
@@ -41,12 +40,11 @@
 			    $mois = $unMois['numMois']."/".$unMois['numAnnee'];
 				$numAnnee =  $unMois['numAnnee'];
 				$numMois =  $unMois['numMois'];
-				if($mois === $moisASelectionner){
+				if ($mois === $moisASelectionner) {
 				?>
 				<option selected value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
-				}
-				else{ ?>
+				} else { ?>
 				<option value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
 				}	
@@ -59,7 +57,7 @@
         </div>
         <div class="piedForm">
          <p>
-       <input id="ok" type="submit" value="Valider" size="20" />
+       <input id="ok" type="submit" value="Valider" size="20" name="valid"/>
          </p> 
       </div>
     </form>
