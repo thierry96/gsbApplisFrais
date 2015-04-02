@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /** 
  * Fonctions pour l'application GSB
  
@@ -6,6 +6,7 @@
  * @author Cheri Bibi
  * @version    1.0
  */
+
  /**
  * Teste si un quelconque visiteur est connecté
  * @return vrai ou faux 
@@ -25,7 +26,7 @@ function connecter($id,$nom,$prenom,$profil){
 	$_SESSION['idVisiteur']= $id; 
 	$_SESSION['nom']= $nom;
 	$_SESSION['prenom']= $prenom;
-        $_SESSION['profil']= $profil;
+  $_SESSION['profil']= $profil;
 }
 /**
  * Détruit la session active
@@ -37,7 +38,7 @@ function deconnecter(){
  * Transforme une date au format français jj/mm/aaaa vers le format anglais aaaa-mm-jj
  
  * @param $madate au format  jj/mm/aaaa
- * @return la date au format anglais aaaa-mm-jj
+ * @return String la date au format anglais aaaa-mm-jj
 */
 function dateFrancaisVersAnglais($maDate){
 	@list($jour,$mois,$annee) = explode('/',$maDate);
@@ -47,7 +48,7 @@ function dateFrancaisVersAnglais($maDate){
  * Transforme une date au format format anglais aaaa-mm-jj vers le format français jj/mm/aaaa 
  
  * @param $madate au format  aaaa-mm-jj
- * @return la date au format format français jj/mm/aaaa
+ * @return String la date au format format français jj/mm/aaaa
 */
 function dateAnglaisVersFrancais($maDate){
    @list($annee,$mois,$jour)=explode('-',$maDate);
@@ -58,7 +59,7 @@ function dateAnglaisVersFrancais($maDate){
  * retourne le mois au format aaaamm selon le jour dans le mois
  
  * @param $date au format  jj/mm/aaaa
- * @return le mois au format aaaamm
+ * @return String  le mois au format aaaamm
 */
 function getMois($date){
 		@list($jour,$mois,$annee) = explode('/',$date);
@@ -69,14 +70,25 @@ function getMois($date){
 }
 /**
  * retourne le mois au format aaaamm en fonction du mois au format mmaaaa
- * 
+ * @author Sam Thierry <thierryadjoua@yahoo.fr>
  * @param $date au format mmaaaa
- * @return le mois au format aaaamm
+ * @return String le mois au format aaaamm
  */
 function getMoisAng($date){
     $chaine = substr($date, 0 , 2);
     $chaine2 = substr($date, 3 , 7);
     return $chaine2."".$chaine;
+}
+/**
+ * retourne le mois au format mmaaaa en fonction du mois au format aaaamm
+ * @author Sam Thierry <thierryadjoua@yahoo.fr>
+ * @param $date au format aaaamm
+ * @return String le mois au format mmaaaa
+ */
+function getMoisFr($date){
+    $chaine = substr($date, 0 , 4);
+    $chaine2 = substr($date, 4 , 7);
+    return $chaine2."/".$chaine;
 }
 /* gestion des erreurs*/
 /**
@@ -89,7 +101,6 @@ function estEntierPositif($valeur) {
 	return preg_match("/[^0-9]/", $valeur) == 0;
 	
 }
-
 /**
  * Indique si un tableau de valeurs est constitué d'entiers positifs ou nuls
  
@@ -164,7 +175,7 @@ function lesQteFraisValides($lesFrais){
  */
 function valideInfosFrais($dateFrais,$libelle,$montant){
 	if($dateFrais==""){
-		ajouterErreur("Le champ date ne doit pas être vide");
+		ajouterErreur("Le champ date ne doit pas &ecirc;tre vide");
 	}
 	else{
 		if(!estDatevalide($dateFrais)){
@@ -213,7 +224,8 @@ function nbErreurs(){
 }
 /**
  * Affichage d'espaces
- * @param int $nbEspaces nombre d'espaces à afficher
+ * @author Sam Thierry <thierryadjoua@yahoo.fr>
+ * @param  $nbEspaces nombre d'espaces à afficher
  */     
 function espace($nbEspaces=1) {
   for ($k=0 ; $k<$nbEspaces ; $k++) {
@@ -222,10 +234,34 @@ function espace($nbEspaces=1) {
 }  
  /**
   * Fait un retour à la ligne
-  * @param int $nbLigne nombre de retour à ligne 
+  * @author Sam Thierry <thierryadjoua@yahoo.fr>
+  * @param $nbLigne nombre de retour à ligne 
   */
   function retourLigne($nbLigne){
       for ($k = 0 ; $k < $nbLigne ; $k++){
           echo "<br />";
       }
   }
+  /**
+  * Retourne le mois suivant en fonction du mois passé en paramètre au format mmmmaa
+  * @author Sam Thierry <thierryadjoua@yahoo.fr>
+  * @param  $mois  
+  * @return $mois
+  */
+  function prochainMois($mois){
+      $numMois = (int)  substr($mois, 4 , 7);
+      $numAnnee = (int) substr($mois, 0 , 4);
+      if (($numMois < 10) && ($numMois < 9)) {
+          $numMois += 1 ;
+          $numMois = "0".$numMois;
+      } elseif (($numMois >= 10) && ($numMois < 12)) {
+         $numMois += 1 ;
+      } elseif ($numMois == 9) {
+          $numMois += 1 ;
+      } elseif ($numMois == 12) {
+          $numMois = "01" ;
+          $numAnnee +=1 ;
+      }  
+      return $numAnnee."".$numMois ;
+  }
+?>  
