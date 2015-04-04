@@ -7,21 +7,21 @@
             <p>
             <label for="lstVisiteur">Visiteur :</label>
            
-            <select name="lstVisiteur" onchange="document.location.href='index.php?uc=validerFraisFiche&action=choixVisiteurEtMois';">
+            <select name="lstVisiteur" >
                 <?php 
                 
                     foreach ($lesVisiteurs as $unVisiteur){
                         $nom = $unVisiteur['nom'];
                         $prenom = $unVisiteur['prenom'];
                         $id = $unVisiteur['id'];
-                        if ($nom." ".$prenom == $leVisiteur)
+                        if ($nom." ".$prenom === $leVisiteur['nom']." ".$leVisiteur['prenom'])
                             {                                                      
                         ?>
-                        <option selected value="<?php echo  $id ?>"><?php echo  $nom." ".$prenom ?> </option>
+                        <option selected value="<?php echo  $id; ?>"><?php echo  $nom." ".$prenom ;?> </option>
                         <?php
                          }else {
                         ?> 
-                         <option  value="<?php echo  $id ?>"><?php echo  $nom." ".$prenom ?> </option>
+                         <option  value="<?php echo  $id ;?>"><?php echo  $nom." ".$prenom; ?> </option>
                         <?php
                          }
                     }  
@@ -41,18 +41,18 @@
 			    $mois = $unMois['numMois']."/".$unMois['numAnnee'];
 				$numAnnee =  $unMois['numAnnee'];
 				$numMois =  $unMois['numMois'];
-				if($mois == $moisASelectionner){
+				if($mois === $moisASelectionner){
 				?>
-				<option selected value="<?php echo $mois ?>"><?php echo  $numMois."/".$numAnnee ?> </option>
+				<option selected value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
 				}
 				else{ ?>
-				<option value="<?php echo $mois ?>"><?php echo  $numMois."/".$numAnnee ?> </option>
+				<option value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
 				}	
 			}
                   } 
-                  echo $lesVisiteurs;
+
 		   ?>         
         </select>
             </p>          
