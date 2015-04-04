@@ -5,20 +5,22 @@
 <?php retourLigne(2) ?>
 <form method="POST" action="index.php?uc=connexion&action=valideConnexion">
    
-    <center>
-			<p>
-                    <p>
-                        <label for="nom">Login*</label> <?php espace(10) ?>
+    <div class="corpsForm">
+      <p>
+       <label for="nom">Login*</label> <?php espace(10) ; ?> 
        <input id="login" type="text" name="login"  size="30" maxlength="45">
       </p>
-			<p>
-			  <label for="mdp">Mot de passe*</label>
-			  <input id="mdp"  type="password"  name="mdp" size="30" maxlength="45">
+       <p>
+	<label for="mdp">Mot de passe* </label> <?php espace(10) ; ?>
+	<input id="mdp"  type="password"  name="mdp" size="30" maxlength="45">
       </p>
-        <?php espace(47) ?> <input type="submit" value="Valider" name="valider">
-         <input type="reset" value="Annuler" name="annuler"> 
-  </p>
-    </center>
+      </div>
+    <div class="piedForm">
+        <p>
+         <input type="submit" value="Valider" name="valider">
+         <input type="reset" value="Annuler" name="annuler"> <?php espace() ; ?>
+      </p>
+    </div>
 </form>
 
 </div>
