@@ -1,4 +1,9 @@
 ﻿<?php
+/**
+ * Cette page php constitu le controleur des actions qui seront mennées pour la gestion de la connexion à l'intranet du laboratoire GSB.
+ * @package Default
+ * @author ADJOUA Sam Thierry  <thierryadjoua@yahoo.fr>
+ */
 if(!isset($_REQUEST['action'])){
 	$_REQUEST['action'] = 'demandeConnexion';
 }
