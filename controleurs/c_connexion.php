@@ -34,6 +34,8 @@ switch($action){
 		break;
 	}
 	default :{
+                // supression des variables de sessions
+                deconnecter() ;
 		include("vues/v_connexion.php");
 		break;
 	}
