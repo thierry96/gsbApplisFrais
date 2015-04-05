@@ -1,4 +1,8 @@
+
 <?php
+/**
+ * Cette page php constitue le controleur des actions qui seront mennées pour la saisie et la validation des fiches de frais par un visiteur.
+ */
 include("vues/v_sommaire.php");
 $idVisiteur = $_SESSION['idVisiteur'];
 $mois = getMois(date("d/m/Y"));

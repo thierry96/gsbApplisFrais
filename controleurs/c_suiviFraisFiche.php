@@ -1,6 +1,6 @@
 <?php
 /**
- * Cette page php constitu le controleur des actions qui seront mennées pour le suivi du paiement des fiches de frais.
+ * Cette page php constitue le controleur des actions qui seront mennées pour le suivi du paiement des fiches de frais.
  */
 include("vues/v_sommaire.php");
 // récupération de l'action 
