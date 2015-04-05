@@ -6,7 +6,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="javascript.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="./images/logo.jpg" />
   </head>
   <body>
     <div id="page">

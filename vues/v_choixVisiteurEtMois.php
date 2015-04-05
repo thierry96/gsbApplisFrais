@@ -9,17 +9,19 @@
            
             <select name="lstVisiteur">
                 <?php 
-                
-                    foreach ($lesVisiteurs as $unVisiteur){
+                // parcour du tableau associatif lesVisiteur pour remplir la liste des visiteur
+                    foreach ($lesVisiteurs as $unVisiteur) {
+                        // récupération du nom dans la variable $nom
                         $nom = $unVisiteur['nom'];
+                        // récupération du prénom dans la variable $prenom
                         $prenom = $unVisiteur['prenom'];
+                        // récupération de l'id dans la variable $id
                         $id = $unVisiteur['id'];
-                        if ($nom." ".$prenom == $leVisiteur)
-                            {                                                      
+                        if ($nom." ".$prenom === $leVisiteur['nom']." ".$leVisiteur['prenom']) {                                                      
                         ?>
                         <option selected value="<?php echo  $id ;  ?>"><?php echo  $nom." ".$prenom ;  ?> </option>
                         <?php
-                         }else {
+                         } else {
                         ?> 
                          <option  value="<?php echo  $id ;  ?>"><?php echo  $nom." ".$prenom ;  ?> </option>
                         <?php
@@ -34,19 +36,19 @@
             <select id="lstMois" name="lstMois"> 
             
             <?php
-                  if($lesMois != NULL)
-                  {
+                  if($lesMois != NULL) { // Boucle pour le parcour du tableau associatif $lesMois
 			foreach ($lesMois as $unMois)
 			{
+                            //récupération du mois au format aa/mmmm
 			    $mois = $unMois['numMois']."/".$unMois['numAnnee'];
-				$numAnnee =  $unMois['numAnnee'];
-				$numMois =  $unMois['numMois'];
-				if($mois == $moisASelectionner){
+                            $numAnnee =  $unMois['numAnnee'];
+                            $numMois =  $unMois['numMois'];
+                            // condition pour savoir si le mois à la position t est égale au mois choisi
+				if ($mois == $moisASelectionner) {
 				?>
 				<option selected value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
-				}
-				else{ ?>
+				} else { ?>
 				<option value="<?php echo $mois ; ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
 				}	

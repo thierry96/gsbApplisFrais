@@ -9,11 +9,15 @@
            
             <select name="lstVisiteur" >
                 <?php 
-                
+                // parcour du tableau associatif les visiteurs
                     foreach ($lesVisiteurs as $unVisiteur){
+                        // récupération du nom dans la variable $nom
                         $nom = $unVisiteur['nom'];
+                        // récupération du prenom dans la variable $prenom
                         $prenom = $unVisiteur['prenom'];
+                        // récupération de l'id dans la variable $id
                         $id = $unVisiteur['id'];
+                        //condition pour savoir si le visiteur se trouvant à la position t est égale au visiteur choisi
                         if ($nom." ".$prenom === $leVisiteur['nom']." ".$leVisiteur['prenom']) {                                                      
                         ?>
                         <option selected value="<?php echo  $id; ?>"><?php echo  $nom." ".$prenom ;?> </option>
