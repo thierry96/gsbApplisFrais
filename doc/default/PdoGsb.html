@@ -146,7 +146,6 @@
 				<li><a href="../default/PdoGsb.html#methodgetLesMoisDisponibles">getLesMoisDisponibles</a></li>
 				<li><a href="../default/PdoGsb.html#methodgetLesVisiteurs">getLesVisiteurs</a></li>
 				<li><a href="../default/PdoGsb.html#methodgetLibelleFraisHorsForfait">getLibelleFraisHorsForfait</a></li>
-				<li><a href="../default/PdoGsb.html#methodgetMontantFraisHorsForfait">getMontantFraisHorsForfait</a></li>
 				<li><a href="../default/PdoGsb.html#methodgetMontantTotalFicheFrais">getMontantTotalFicheFrais</a></li>
 				<li><a href="../default/PdoGsb.html#methodgetNbjustificatifs">getNbjustificatifs</a></li>
 				<li><a href="../default/PdoGsb.html#methodgetNomPrenom">getNomPrenom</a></li>
@@ -204,7 +203,7 @@
 )</code>
 		</p>
 	
-		<p class="linenumber">[line 43]</p>
+		<p class="linenumber">[line 44]</p>
 		<p align="center"><strong>Fonction statique qui crée l'unique instance de la classe
 </strong></p>
 <p>Appel : $instancePdoGsb = PdoGsb::getPdoGsb();</p><h4>Tags:</h4>
@@ -230,7 +229,7 @@ $idFrais
 $idFrais)</code>
 		</p>
 	
-		<p class="linenumber">[line 359]</p>
+		<p class="linenumber">[line 346]</p>
 		<p align="center"><strong>Ajoute le texte REFUSE en début de libelle d'un frais hors forfait
 </strong></p>
 <h4>Tags:</h4>
@@ -263,7 +262,7 @@ $date, $montant
 $montant)</code>
 		</p>
 	
-		<p class="linenumber">[line 340]</p>
+		<p class="linenumber">[line 327]</p>
 		<p align="center"><strong>Crée un nouveau frais hors forfait pour un visiteur un mois donné
 </strong></p>
 <p>à partir des informations fournies en paramètre</p><h4>Tags:</h4>
@@ -313,7 +312,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 312]</p>
+		<p class="linenumber">[line 299]</p>
 		<p align="center"><strong>Crée une nouvelle fiche de frais et les lignes de frais au forfait pour un visiteur et un mois donnés
 </strong></p>
 <p>récupère le dernier mois en cours de traitement, met à 'CL' son champs idEtat, crée une nouvelle fiche de frais  avec un idEtat à 'CR' et crée les lignes de frais forfait de quantités nulles</p><h4>Tags:</h4>
@@ -347,7 +346,7 @@ $idVisiteur
 $idVisiteur)</code>
 		</p>
 	
-		<p class="linenumber">[line 296]</p>
+		<p class="linenumber">[line 283]</p>
 		<p align="center"><strong>Retourne le dernier mois en cours d'un visiteur
 </strong></p>
 <h4>Tags:</h4>
@@ -378,7 +377,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 277]</p>
+		<p class="linenumber">[line 264]</p>
 		<p align="center"><strong>Teste si un visiteur possède un fiche de frais hors forfait pour le mois passé en paramètre
 </strong></p>
 <h4>Tags:</h4>
@@ -414,7 +413,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 259]</p>
+		<p class="linenumber">[line 246]</p>
 		<p align="center"><strong>Teste si un visiteur possède une fiche de frais pour le mois passé en argument
 </strong></p>
 <h4>Tags:</h4>
@@ -449,7 +448,7 @@ $nomPrenom
 $nomPrenom)</code>
 		</p>
 	
-		<p class="linenumber">[line 81]</p>
+		<p class="linenumber">[line 82]</p>
 		<p align="center"><strong>Retourne l'id en fonction de la concatenation du nom et du prenoms passée en paramètre
 </strong></p>
 <h4>Tags:</h4>
@@ -480,7 +479,7 @@ $login, $mdp
 $mdp)</code>
 		</p>
 	
-		<p class="linenumber">[line 56]</p>
+		<p class="linenumber">[line 57]</p>
 		<p align="center"><strong>Retourne les informations d'un visiteur
 </strong></p>
 <h4>Tags:</h4>
@@ -514,7 +513,7 @@ $mdp)</code>
 )</code>
 		</p>
 	
-		<p class="linenumber">[line 211]</p>
+		<p class="linenumber">[line 198]</p>
 		<p align="center"><strong>Retourne l'id du premier visiteur classé pas ordre alphabétique
 </strong></p>
 <h4>Tags:</h4>
@@ -540,7 +539,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 161]</p>
+		<p class="linenumber">[line 162]</p>
 		<p align="center"><strong>Retourne sous forme d'un tableau associatif toutes les lignes de frais au forfait
 </strong></p>
 <p>concernées par les deux arguments</p><h4>Tags:</h4>
@@ -576,7 +575,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 98]</p>
+		<p class="linenumber">[line 99]</p>
 		<p align="center"><strong>Retourne sous forme d'un tableau associatif toutes les lignes de frais hors forfait
 </strong></p>
 <p>concernées par les deux arguments  La boucle foreach ne peut ecirc;tre utilisée ici car on procède  à une modification de la structure itérée - transformation du champ date-</p><h4>Tags:</h4>
@@ -610,7 +609,7 @@ $mois)</code>
 )</code>
 		</p>
 	
-		<p class="linenumber">[line 191]</p>
+		<p class="linenumber">[line 178]</p>
 		<p align="center"><strong>Retourne tous les id de la table FraisForfait
 </strong></p>
 <h4>Tags:</h4>
@@ -636,7 +635,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 400]</p>
+		<p class="linenumber">[line 387]</p>
 		<p align="center"><strong>Retourne les informations d'une fiche de frais d'un visiteur pour un mois donné
 </strong></p>
 <h4>Tags:</h4>
@@ -671,7 +670,7 @@ $idVisiteur
 $idVisiteur)</code>
 		</p>
 	
-		<p class="linenumber">[line 374]</p>
+		<p class="linenumber">[line 361]</p>
 		<p align="center"><strong>Retourne les mois pour lesquel un visiteur a une fiche de frais
 </strong></p>
 <h4>Tags:</h4>
@@ -700,7 +699,7 @@ $idVisiteur)</code>
 )</code>
 		</p>
 	
-		<p class="linenumber">[line 201]</p>
+		<p class="linenumber">[line 188]</p>
 		<p align="center"><strong>Retourne le nom et prenom des visiteurs
 </strong></p>
 <h4>Tags:</h4>
@@ -727,7 +726,7 @@ $mois, $idFrais
 $idFrais)</code>
 		</p>
 	
-		<p class="linenumber">[line 118]</p>
+		<p class="linenumber">[line 119]</p>
 		<p align="center"><strong>Retourne les informations d'une ligne de frais hors forfaits
 </strong></p>
 <h4>Tags:</h4>
@@ -757,42 +756,6 @@ $idFrais)</code>
 		</ul>
 	</div>
 	<p class="top">[ <a href="#top">Top</a> ]</p>
-	<a name="methodgetMontantFraisHorsForfait"></a>
-	<p></p>
-	<h3>getMontantFraisHorsForfait</h3>
-	<div class="indent">
-		<p>
-		<code>la getMontantFraisHorsForfait(
-$idVisiteur
-$idVisiteur, $mois
-$mois)</code>
-		</p>
-	
-		<p class="linenumber">[line 178]</p>
-		<p align="center"><strong>Retourne le montant total des frais forfaits concernées par les deux arguments
-</strong></p>
-<h4>Tags:</h4>
-<ul>
-	<li><b>return</b> - somme totale des frais forfaits</li>
-	<li><b>access</b> - public</li>
-</ul>
-		
-	
-	<h4>Parameters:</h4>
-	<ul>
-			<li>
-		<span class="type">$idVisiteur</span>
-		<b>$idVisiteur</b> 
-		- 
-		</li>
-			<li>
-		<span class="type">$mois</span>
-		<b>$mois</b> 
-		- 
-		sous la forme aaaamm</li>
-		</ul>
-	</div>
-	<p class="top">[ <a href="#top">Top</a> ]</p>
 	<a name="methodgetMontantTotalFicheFrais"></a>
 	<p></p>
 	<h3>getMontantTotalFicheFrais</h3>
@@ -804,7 +767,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 133]</p>
+		<p class="linenumber">[line 134]</p>
 		<p align="center"><strong>Retourne le montant total des frais forfaits en fonction du mois  et du
 </strong></p>
 <p>du visiteur passé en paramètre</p><h4>Tags:</h4>
@@ -840,7 +803,7 @@ $idVisiteur, $mois
 $mois)</code>
 		</p>
 	
-		<p class="linenumber">[line 147]</p>
+		<p class="linenumber">[line 148]</p>
 		<p align="center"><strong>Retourne le nombre de justificatif d'un visiteur pour un mois donné
 </strong></p>
 <h4>Tags:</h4>
@@ -875,7 +838,7 @@ $idVisiteur
 $idVisiteur)</code>
 		</p>
 	
-		<p class="linenumber">[line 69]</p>
+		<p class="linenumber">[line 70]</p>
 		<p align="center"><strong>Retourne le nom et le prenom d'un utilisateur en fonction de l'id passé en paramètre
 </strong></p>
 <h4>Tags:</h4>
@@ -907,7 +870,7 @@ $mois, montant
 $etat)</code>
 		</p>
 	
-		<p class="linenumber">[line 418]</p>
+		<p class="linenumber">[line 405]</p>
 		<p align="center"><strong>Modifie l'état et la date de modification d'une fiche de frais
 </strong></p>
 <p>Modifie le champ idEtat et met la date de modif à aujourd'hui</p><h4>Tags:</h4>
@@ -948,7 +911,7 @@ $mois, $lesFrais
 $lesFrais)</code>
 		</p>
 	
-		<p class="linenumber">[line 228]</p>
+		<p class="linenumber">[line 215]</p>
 		<p align="center"><strong>Met à jour la table ligneFraisForfait
 </strong></p>
 <p>Met à jour la table ligneFraisForfait pour un visiteur et  un mois donné en enregistrant les nouveaux montants</p><h4>Tags:</h4>
@@ -990,7 +953,7 @@ $mois, $montant
 $montant)</code>
 		</p>
 	
-		<p class="linenumber">[line 432]</p>
+		<p class="linenumber">[line 419]</p>
 		<p align="center"><strong>Modifie le montant validé et la date de modification d'une fiche de frais
 </strong></p>
 <p>Modifie le champ montantValide et met la date de modif à aujourd'hui</p><h4>Tags:</h4>
@@ -1031,7 +994,7 @@ $mois,
 $nbJustificatifs)</code>
 		</p>
 	
-		<p class="linenumber">[line 247]</p>
+		<p class="linenumber">[line 234]</p>
 		<p align="center"><strong>met à jour le nombre de justificatifs de la table ficheFrais
 </strong></p>
 <p>pour le mois et le visiteur concerné</p><h4>Tags:</h4>
@@ -1070,7 +1033,7 @@ $idFrais
 $idFrais)</code>
 		</p>
 	
-		<p class="linenumber">[line 351]</p>
+		<p class="linenumber">[line 338]</p>
 		<p align="center"><strong>Supprime le frais hors forfait dont l'id est passé en argument
 </strong></p>
 <h4>Tags:</h4>
@@ -1098,7 +1061,7 @@ $idFrais)</code>
 )</code>
 		</p>
 	
-		<p class="linenumber">[line 33]</p>
+		<p class="linenumber">[line 34]</p>
 		<h4>Tags:</h4>
 <ul>
 	<li><b>access</b> - public</li>
@@ -1117,7 +1080,7 @@ $idFrais)</code>
 	</div>
 	<div id="credit">
 		<hr>
-		Documentation generated on Fri, 03 Apr 2015 06:05:43 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 05 Apr 2015 17:04:35 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	</div>
 </div>
 </body>
