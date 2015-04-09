@@ -11,22 +11,28 @@ if(!isset($_REQUEST['uc']) || !$estConnecte){
 $uc = $_REQUEST['uc'];
 switch($uc){
 	case 'connexion':{
-		include("controleurs/c_connexion.php");break;
+		include("controleurs/c_connexion.php");
+                break;
 	}
 	case 'gererFrais' :{
-		include("controleurs/c_gererFrais.php");break;
+		include("controleurs/c_gererFrais.php");
+                break;
 	}
 	case 'etatFrais' :{
-		include("controleurs/c_etatFrais.php");break; 
+		include("controleurs/c_etatFrais.php");
+                break; 
 	}
         case 'acceuil' :{
-		include("controleurs/c_acceuil.php");break; 
+		include("controleurs/c_acceuil.php");
+                break; 
 	}
         case 'validerFraisFiche' :{
-		include("controleurs/c_validerFraisFiche.php");break; 
+		include("controleurs/c_validerFraisFiche.php");
+                break; 
 	}
         case 'suiviFraisFiche' :{
-		include("controleurs/c_suiviFraisFiche.php");break; 
+		include("controleurs/c_suiviFraisFiche.php");
+                break; 
 	}
 }
 include("vues/v_pied.php") ;
