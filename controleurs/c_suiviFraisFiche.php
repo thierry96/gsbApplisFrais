@@ -54,7 +54,7 @@ switch($action){
             if (!$pdo->estPremierFraisMois($idVisiteur , $moisAng)) {
                 include ("vues/v_suiviFrais.php") ;
              } else {
-                $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais ce mois" ;
+                $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais pour le mois de ".$moisASelectionner ;
                 include ("vues/v_information.php");
                 include ("vues/v_choixVisiteurEtMois.php");
             }      

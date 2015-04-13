@@ -1,4 +1,4 @@
-<?php
+   <?php
 
 /**
  * Cette page php constitue le controleur des actions qui seront mennées pour la validation d'une fiche de frais.
@@ -60,7 +60,7 @@ switch($action){
            include ("vues/v_validerFrais.php") ;
         } else {
           // inclusion de la vue pour l'affichage de l'information
-            $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais ce mois" ;
+            $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais pour le mois de ".$moisASelectionner ;
             include_once ("vues/v_information.php");
             include_once ("vues/v_listeVisiteurEtMois.php");
         }  
