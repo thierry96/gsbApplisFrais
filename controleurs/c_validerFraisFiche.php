@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Cette page php constitue le controleur des actions qui seront mennées pour la validation d'un fiche de frais.
+ * Cette page php constitue le controleur des actions qui seront mennées pour la validation d'une fiche de frais.
  */
 include("vues/v_sommaire.php");
 // récupération de l'action 
@@ -34,8 +34,8 @@ switch($action){
         $lesVisiteurs = $pdo->getLesVisiteurs();       
         // récupération du nom et du prénom du visiteur choisi
         $leVisiteur = $pdo->getNomPrenom($idVisiteur) ;
-	$lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
-	$moisASelectionner = $leMois ;
+	       $lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
+	       $moisASelectionner = $leMois ;
         // transformation du mois choisi en format aaaamm
         $moisAng = getMoisAng($moisASelectionner); 
         // récupération des informations concernant la fiche du visiteur choisi en fonction
@@ -45,7 +45,7 @@ switch($action){
         $sommeFF = 0 ;
         $sommeFHF = 0 ;
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur,$moisAng); 
-	$lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$moisAng);
+	      $lesFraisForfait= $pdo->getLesFraisForfait($idVisiteur,$moisAng);
         // récupération des informations des frais forfaits du visiteur en question
         $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur,$moisAng); 
         // récupération du nombre de justificatif du mois
@@ -77,12 +77,12 @@ switch($action){
            // Si les frais forfaits validés respectent les conditions établies   
            if (lesQteFraisValides($lesFrais)) {
             // Mise à jour des éléments forfaitisés      
-	  	 $pdo->majFraisForfait($idVisiteur,$moisAng,$lesFrais);
+	  	        $pdo->majFraisForfait($idVisiteur,$moisAng,$lesFrais);
             } else {
             // ajout d'une erreur au tableau des erreurs      
-		ajouterErreur("Les valeurs des frais doivent être numériques");
-		include("vues/v_erreurs.php");
-            }
+	       	     ajouterErreur("Les valeurs des frais doivent être numériques");
+		           include("vues/v_erreurs.php");
+           }
             // récupération de la liste des visiteurs   
             $lesVisiteurs = $pdo->getLesVisiteurs();           
             // récupération du nom et du prénom du visiteur choisi
@@ -177,9 +177,9 @@ switch($action){
                 $pdo->majNbJustificatifs($idVisiteur , $moisAng , $nb) ;            
             } else {
                 // ajout d'un erreur au tableau des erreurs     
-		ajouterErreur("Les valeurs des frais doivent être numériques");
+	             	ajouterErreur("Les valeurs des frais doivent être numériques");
                 // affichage de l'erreur      
-		include("vues/v_erreurs.php");
+		            include("vues/v_erreurs.php");
             }
             // récupération de la liste des visiteurs dans la base de données   
             $lesVisiteurs = $pdo->getLesVisiteurs();           
