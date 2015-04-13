@@ -67,7 +67,7 @@
     Etat: <?php echo $lesInfosFicheFrais['libEtat']; ?> 
     depuis le <?php echo dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']) ; ?> <br />
     Montant validé : <?php echo $lesInfosFicheFrais['montantValide'] ; ?>
-    <!-- Affichage des informations liée aux élements forfaitisés -->
+    <!-- Affichage des informations liées aux élements forfaitisés -->
     <form method="POST"  action="index.php?uc=validerFraisFiche&action=validerMajFraisForfait">
       <div class="corpsForm">
           <input type="hidden" name="idVis" value="<?php echo $idVisiteur ; ?>" />
@@ -173,8 +173,8 @@
         <div class="corpsForm">
             <input type="hidden" name="idVis" value="<?php echo $idVisiteur ; ?>" />
             <input type="hidden" name="leMois" value="<?php echo $moisAng ;  ?>" />
-            <h3> Montant total à valider : <?php echo $sommeFF + $sommeFHF ; ?> </h3>
-            <input type="hidden" name="montantValide" value="<?php echo $sommeFF + $sommeFHF ; ?>" />
+             <p><h3><label for="montantValide"> Montant total à valider :</label> </h3>            
+            <input type="text" name="montantValide" value="<?php echo $sommeFF + $sommeFHF ; ?>" size="5" maxlength="5"/> </p>
         </div>
         <div class="piedForm">
          <p><input id="ok" type="submit" value="Valider cette fiche" size="40" /></p> 

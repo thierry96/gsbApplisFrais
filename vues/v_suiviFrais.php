@@ -70,28 +70,32 @@
       <div class="corpsForm">
           <input type="hidden" name="idVis" value="<?php echo $idVisiteur ; ?>" />
            <input type="hidden" name="leMois" value="<?php echo $moisAng ;  ?>" />
-          <fieldset>
-            <legend>Eléments forfaitisés
-            </legend>
-			<?php
-                       
-				foreach ($lesFraisForfait as $unFrais)
-				{
-					$idFrais = $unFrais['idfrais'];
-					$libelle = $unFrais['libelle'];
-					$quantite = $unFrais['quantite'];
-                                        $sommeFF += $quantite ;
-			?>
-					<p>
-						<label for="idFrais"><?php echo $libelle ; ?></label>
-						<input type="text" id="idFrais" name="lesFrais[<?php echo $idFrais ; ?>]" size="10" maxlength="5" value="<?php echo $quantite ; ?>" >
-					</p>
-			
-			<?php
-				}
-			?>
-			 
-          </fieldset>
+           <table class="listeLegere">
+  	   <caption>Eléments forfaitisés </caption>
+        <tr>
+         <?php
+         foreach ( $lesFraisForfait as $unFraisForfait ) 
+		 {
+			$libelle = $unFraisForfait['libelle'];
+		?>	
+			<th> <?php echo $libelle?></th>
+		 <?php
+        }
+		?>
+		</tr>
+        <tr>
+        <?php
+          foreach (  $lesFraisForfait as $unFraisForfait  ) 
+		  {
+				$quantite = $unFraisForfait['quantite'];
+                                $sommeFF += $quantite ;
+		?>
+                <td class="qteForfait"><?php echo $quantite?> </td>
+		 <?php
+          }
+		?>
+		</tr>
+    </table>
           <h3>TOTAL DES ELEMENTS FORFAITISES : <?php echo $sommeFF ; ?></h3>
       </div>
         
@@ -106,8 +110,7 @@
              <tr>
                <th class="date">Date</th>
 				<th class="libelle">Libellé</th>  
-                <th class="montant">Montant</th>  
-                <th class="action">&nbsp;</th>   
+                <th class="montant">Montant</th>    
              </tr>
           
     <?php   
@@ -120,7 +123,6 @@
 			$libelle = $unFraisHorsForfait['libelle'];
 			$date = $unFraisHorsForfait['date'];
 			$montant=$unFraisHorsForfait['montant'];
-			$id = $unFraisHorsForfait['id'];
                         $sommeFHF +=  $montant ;
 	     ?>
              
@@ -141,7 +143,7 @@
             <?php if( $infoVisiteur['idEtat'] == "V") {
                 ?>           
                 <p><a href="index.php?uc=suiviFraisFiche&action=paiementFiche&idVisiteur=<?php echo $idVisiteur ; ?>&mois=<?php echo $moisAng ; ?>" 
-                      title="Mettre en paiement la fiche de frais">Mise en paiement</a>
+                      title="Mettre en paiement la fiche de frais">Mise en paiement</a> <?php espace() ; ?>
            <?php } elseif ($infoVisiteur['idEtat'] == "VA") {  ?>
             
             <a href="index.php?uc=suiviFraisFiche&action=rembourserFiche&idVisiteur=<?php echo $idVisiteur ; ?>&mois=<?php echo $moisAng ; ?>" 
