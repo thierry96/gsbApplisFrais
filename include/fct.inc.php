@@ -69,7 +69,7 @@ function getMois($date){
 		return $annee.$mois;
 }
 /**
- * retourne le mois au format aaaamm en fonction du mois au format mmaaaa
+ * retourne le mois au format aaaamm en fonction du mois au format mm/aaaa
  * @author Sam Thierry <thierryadjoua@yahoo.fr>
  * @param $date au format mmaaaa
  * @return String le mois au format aaaamm

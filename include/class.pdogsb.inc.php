@@ -17,9 +17,9 @@
 
 class PdoGsb{   		
       	private static $serveur='mysql:host=localhost' ;
-      	private static $bdd='dbname=gsb' ;   		
-      	private static $user='root' ;    		
-      	private static $mdp='' ;	
+      	private static $bdd='dbname=kephrem0_gsb' ;   		
+      	private static $user='kephrem0' ;    		
+      	private static $mdp='bahena2013' ;	
 		    private static $monPdo;
 		    private static $monPdoGsb=null;
 /**
@@ -57,7 +57,7 @@ class PdoGsb{
 	public function getInfosVisiteur($login, $mdp){
 		$req = "select utilisateur.id as id, utilisateur.nom as nom, utilisateur.prenom as prenom, profil.libelle as profil 
                     from utilisateur join profil on utilisateur.idProfil = profil.id
-		where utilisateur.login='$login' and SHA1(mdp) = ( select SHA1(mdp) from utilisateur where login ='$login')";
+		where mdp = SHA1('$mdp') AND login = '$login'";
 		$rs = PdoGsb::$monPdo->query($req);
 		$ligne = $rs->fetch();
 		return $ligne;
