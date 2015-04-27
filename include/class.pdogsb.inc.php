@@ -17,9 +17,9 @@
 
 class PdoGsb{   		
       	private static $serveur='mysql:host=localhost' ;
-      	private static $bdd='dbname=kephrem0_gsb' ;   		
-      	private static $user='kephrem0' ;    		
-      	private static $mdp='bahena2013' ;	
+      	private static $bdd='dbname=gsb' ;   		
+      	private static $user='root' ;    		
+      	private static $mdp='' ;	
 		    private static $monPdo;
 		    private static $monPdoGsb=null;
 /**
@@ -359,19 +359,21 @@ class PdoGsb{
  * @return un tableau associatif de clé un mois -aaaamm- et de valeurs l'année et le mois correspondant 
 */
 	public function getLesMoisDisponibles($idVisiteur){
-		$req = "select fichefrais.mois as mois from  fichefrais where fichefrais.idVisiteur = '$idVisiteur' 
+		$req = "select fichefrais.mois as mois , etat.id as id from  fichefrais join etat on fichefrais.idEtat = etat.id where fichefrais.idVisiteur = '$idVisiteur' 
 		  order by fichefrais.mois desc ";
 		$res = PdoGsb::$monPdo->query($req);
 		$lesMois =array();
 		$laLigne = $res->fetch();
 		while($laLigne != null)	{
 			$mois = $laLigne['mois'];
+      $idEtat = $laLigne['id'];
 			$numAnnee =substr( $mois,0,4);
 			$numMois =substr( $mois,4,2);
 			$lesMois["$mois"]=array(
 		     "mois"=>"$mois",
 		    "numAnnee"  => "$numAnnee",
-			"numMois"  => "$numMois"
+			"numMois"  => "$numMois",
+      "idEtat"  => "$idEtat"
              );
 			$laLigne = $res->fetch(); 		
 		}
