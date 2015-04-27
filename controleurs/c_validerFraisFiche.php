@@ -120,6 +120,7 @@ switch($action){
             } else {
                 $ok = FALSE;
             }
+             include ("vues/v_listeVisiteurEtMois.php");
             include ("vues/v_validerFrais.php") ;
             break;
       }
@@ -171,6 +172,7 @@ switch($action){
             } else {
                 $ok = FALSE;
             }
+             include ("vues/v_listeVisiteurEtMois.php");
             include ("vues/v_validerFrais.php") ;
             break;
 	}
@@ -214,6 +216,7 @@ switch($action){
             } else {
                 $ok = FALSE;
             }
+            include ("vues/v_listeVisiteurEtMois.php");
             include ("vues/v_validerFrais.php") ;
             break;
     }
@@ -243,8 +246,9 @@ switch($action){
             } else {
                 $ok = FALSE;
             }
-       include ("vues/v_validerFrais.php") ;
-       break;
+             include ("vues/v_listeVisiteurEtMois.php");
+             include ("vues/v_validerFrais.php") ;
+            break;
     }
     default :
         // récupération de la liste des visiteurs(nom + prénom) sous forme de tableau associatifs

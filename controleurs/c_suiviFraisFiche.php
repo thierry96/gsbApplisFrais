@@ -100,6 +100,7 @@ switch($action){
             } else {
                 $ok = FALSE;
             }
+             include ("vues/v_listeVisiteurEtMois.php");
             include ("vues/v_suiviFrais.php") ;
             break;
     }
@@ -134,6 +135,7 @@ switch($action){
             } else {
                 $ok = FALSE;
             }
+             include ("vues/v_listeVisiteurEtMois.php");
             include ("vues/v_suiviFrais.php") ;
             break;
     }
@@ -149,6 +151,7 @@ switch($action){
             // les mois étant triés décroissants
             $lesCle = array_keys( $lesMois );
             $moisASelectionner = $lesCle[0];
+             include ("vues/v_listeVisiteurEtMois.php");
             include ("vues/v_listeVisiteurEtMois.php");
             break;
 } 
