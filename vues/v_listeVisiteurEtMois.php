@@ -1,13 +1,24 @@
 
 <div id="contenu">
-    <h2> Valider les fiches de frais  </h2>
+    <?php if ($page == "Validation") { ?>
+         <h2> Valider les fiches de frais  </h2>
+      <?php   } else {   ?>
+          <h2> Suivi du paiement des fiches de frais  </h2>
+    <?php  } ?>
     <h3>Visiteur et mois à sélectionner </h3>
-    <form action="index.php?uc=validerFraisFiche&action=validerFrais" method="POST">
+     <?php if ($page == "Validation") { ?>
+         <form action="index.php?uc=validerFraisFiche&action=validerFrais" method="POST" >
+       <?php  } else { ?>
+        <form action="index.php?uc=suiviFraisFiche&action=miseEnPaiement" method="POST">        
+   <?php } ?>   
         <div class="corpsForm">
             <p>
+                <input id ="modifListeVisteur" type="hidden" name="modifListeVisteur" value="<?php echo "Non" ; ?>">
             <label for="lstVisiteur">Visiteur :</label>
            
-            <select name="lstVisiteur" >
+            <select id ="lstVisiteur" name="lstVisiteur" onchange=" changeVisiteurOuValidation();
+                this.form.submit()">
+                
                 <?php 
                 // parcour du tableau associatif les visiteurs
                     foreach ($lesVisiteurs as $unVisiteur){
@@ -44,6 +55,7 @@
 			    $mois = $unMois['numMois']."/".$unMois['numAnnee'];
 				$numAnnee =  $unMois['numAnnee'];
 				$numMois =  $unMois['numMois'];
+                                if ($page === "Validation") {// s'il s'agit d'une validation de fiche
 				if ($mois === $moisASelectionner) {
 				?>
 				<option selected value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
@@ -51,7 +63,17 @@
 				} else { ?>
 				<option value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
 				<?php 
+				}
+                                } else { // s'il s'agit d'un suivi de paiement des fiches
+                                  if ($mois == $moisASelectionner) {
+				?>
+				<option selected value="<?php echo $mois ;  ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
+				<?php 
+				} elseif (($unMois['idEtat'] === "V") || ($unMois['idEtat'] === "VA")) { ?>
+				<option value="<?php echo $mois ; ?>"><?php echo  $numMois."/".$numAnnee ;  ?> </option>
+				<?php 
 				}	
+                                }
 			}
                   } 
 
@@ -61,10 +83,10 @@
         </div>
         <div class="piedForm">
          <p>
-       <input id="ok" type="submit" value="Valider" size="20" name="valid"/>
+       <input id="valider" type="submit" value="Valider" size="20" name="valid" type="hidden"/>
          </p> 
       </div>
     </form>
         
-</div>
+
 
