@@ -6,6 +6,7 @@
 include("vues/v_sommaire.php");
 // récupération de l'action 
 $action = $_REQUEST['action'];
+$page = "Validation"  ;
 $lesFrais;
 switch($action){
    case 'choixVisiteur':{
@@ -30,12 +31,15 @@ switch($action){
         // récupération de l'id du visiteur qui a été choisi
         $idVisiteur = $_REQUEST['lstVisiteur']; 
         //récupération du mois sélectionné
-        $leMois = $_REQUEST['lstMois'] ; 
+        $leMois = $_REQUEST['lstMois'] ;
+        // récupération de l'information permettant de savoir si le comptable a changé de visiteur
+        //dans la liste déroulante des visiteurs
+        $modifListeVisteur = $_REQUEST['modifListeVisteur'] ;
         $lesVisiteurs = $pdo->getLesVisiteurs();       
         // récupération du nom et du prénom du visiteur choisi
         $leVisiteur = $pdo->getNomPrenom($idVisiteur) ;
-	       $lesMois=$pdo->getLesMoisDisponibles($idVisiteur);
-	       $moisASelectionner = $leMois ;
+	$lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+	$moisASelectionner = $leMois ;
         // transformation du mois choisi en format aaaamm
         $moisAng = getMoisAng($moisASelectionner); 
         // récupération des informations concernant la fiche du visiteur choisi en fonction
@@ -55,15 +59,20 @@ switch($action){
         } else {
             $ok = FALSE;
         }
-        // test pour savoir si la fiche en question est la première du mois
-        if (!$pdo->estPremierFraisMois($idVisiteur , $moisAng)) {
-           include ("vues/v_validerFrais.php") ;
+        if($modifListeVisteur === "Oui"){
+           include ("vues/v_listeVisiteurEtMois.php"); 
         } else {
-          // inclusion de la vue pour l'affichage de l'information
-            $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais pour le mois de ".$moisASelectionner ;
-            include_once ("vues/v_information.php");
-            include_once ("vues/v_listeVisiteurEtMois.php");
-        }  
+            // test pour savoir si la fiche en question est la première du mois
+            if (!$pdo->estPremierFraisMois($idVisiteur , $moisAng)) {
+                    include ("vues/v_listeVisiteurEtMois.php");
+                    include ("vues/v_validerFrais.php") ;   
+             } else {
+                    // inclusion de la vue pour l'affichage de l'information
+                    $message = $leVisiteur['nom']." ".$leVisiteur['prenom'] . " n'a pas de fiche de frais pour le mois de ".$moisASelectionner ;
+                    include_once ("vues/v_information.php");
+                    include_once ("vues/v_listeVisiteurEtMois.php");
+            }
+        }
         break;      
     }
     case 'validerMajFraisForfait':{
@@ -237,5 +246,22 @@ switch($action){
        include ("vues/v_validerFrais.php") ;
        break;
     }
+    default :
+        // récupération de la liste des visiteurs(nom + prénom) sous forme de tableau associatifs
+        $lesVisiteurs = $pdo->getLesVisiteurs();
+        // récupération du premier visiteur de liste classée par ordre alphabétique
+        $idVisiteur = $pdo->getLeFirstVisiteur();
+        // récupération de l'id du premier visiteur
+        $idVisiteur = $idVisiteur['id'] ;
+        $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+        //$k = 1;
+        // Afin de sélectionner par défaut le dernier mois dans la zone de liste
+        // on demande toutes les clés, et on prend la première,
+        // les mois étant triés décroissants
+        $lesCle = array_keys( $lesMois );
+        // récupération du mois en cours du premier visiteur 
+        $moisASelectionner = $lesCle[0];
+        include ("vues/v_listeVisiteurEtMois.php");
+        break;
 }
 ?>
